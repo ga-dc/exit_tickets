@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150616165528) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.date     "start_date"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.integer "user_id",   null: false
   end
 
-  add_index "courses_instructors", ["course_id"], name: "index_courses_instructors_on_course_id"
-  add_index "courses_instructors", ["user_id"], name: "index_courses_instructors_on_user_id"
+  add_index "courses_instructors", ["course_id"], name: "index_courses_instructors_on_course_id", using: :btree
+  add_index "courses_instructors", ["user_id"], name: "index_courses_instructors_on_user_id", using: :btree
 
   create_table "possible_responses", force: :cascade do |t|
     t.integer  "question_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "possible_responses", ["question_id"], name: "index_possible_responses_on_question_id"
+  add_index "possible_responses", ["question_id"], name: "index_possible_responses_on_question_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "type"
@@ -55,8 +58,8 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "responses", ["question_id"], name: "index_responses_on_question_id"
-  add_index "responses", ["survey_id"], name: "index_responses_on_survey_id"
+  add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
+  add_index "responses", ["survey_id"], name: "index_responses_on_survey_id", using: :btree
 
   create_table "survey_questions", force: :cascade do |t|
     t.integer  "survey_id"
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "survey_questions", ["question_id"], name: "index_survey_questions_on_question_id"
-  add_index "survey_questions", ["survey_id"], name: "index_survey_questions_on_survey_id"
+  add_index "survey_questions", ["question_id"], name: "index_survey_questions_on_question_id", using: :btree
+  add_index "survey_questions", ["survey_id"], name: "index_survey_questions_on_survey_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.string   "name"
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "surveys", ["course_id"], name: "index_surveys_on_course_id"
+  add_index "surveys", ["course_id"], name: "index_surveys_on_course_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -89,4 +92,10 @@ ActiveRecord::Schema.define(version: 20150616165528) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "possible_responses", "questions"
+  add_foreign_key "responses", "questions"
+  add_foreign_key "responses", "surveys"
+  add_foreign_key "survey_questions", "questions"
+  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "surveys", "courses"
 end
