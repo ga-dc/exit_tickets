@@ -1,0 +1,11 @@
+%div[@course]
+  %h2= course.name
+
+  %p.instructors Instructors: #{course.instructor_names}
+  %p.dates Dates: #{course.dates}
+  %p.enrollment #{course.enrollment} Enrollments
+
+  .surveys
+    %h2 Surveys
+    - course.surveys.each do |survey|
+      = survey.date

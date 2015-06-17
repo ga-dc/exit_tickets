@@ -14,6 +14,8 @@ gem 'neat'
 
 # Other
 gem 'simple_form'
+gem 'haml-rails', '~> 0.9'
+
 
 # Development
 group :development, :test do

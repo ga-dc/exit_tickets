@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @survey.name
+%p
+  %strong Date:
+  = @survey.date
+%p
+  %strong Course:
+  = @survey.course
+= link_to 'Edit', edit_survey_path(@survey)
+|
+= link_to 'Back', surveys_path
