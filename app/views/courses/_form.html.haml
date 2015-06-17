@@ -5,6 +5,6 @@
     = f.input :start_date
     = f.input :end_date
     = f.input :enrollment
-    = f.association :instructors, label_method: :name
+    = f.association :instructors, label_method: :name, input_html: { class: 'chosen-select' }
   .form-actions
     = f.button :submit

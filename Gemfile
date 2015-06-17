@@ -15,6 +15,8 @@ gem 'neat'
 # Other
 gem 'simple_form'
 gem 'haml-rails', '~> 0.9'
+gem 'chosen-rails'
+gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
 
 
 # Development
