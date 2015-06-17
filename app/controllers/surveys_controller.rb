@@ -3,7 +3,8 @@ class SurveysController < ApplicationController
 
   # GET /surveys
   def index
-    @surveys = Survey.all
+    @course = Course.find(params[:course_id])
+    @surveys = @course.surveys
   end
 
   # GET /surveys/1
@@ -12,7 +13,8 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
-    @survey = Survey.new
+    @course = Course.find(params[:course_id])
+    @survey = @course.surveys.build
   end
 
   # GET /surveys/1/edit

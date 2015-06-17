@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "courses#index"
-  resources :courses
-  resources :surveys
   resources :users
+  resources :courses do
+    resources :surveys, shallow: true
+  end
 end

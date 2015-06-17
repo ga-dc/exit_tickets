@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20150616165528) do
   add_index "possible_responses", ["question_id"], name: "index_possible_responses_on_question_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "type"
+    t.string   "question_type"
     t.string   "prompt"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "responses", force: :cascade do |t|

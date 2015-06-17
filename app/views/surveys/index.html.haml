@@ -1,20 +1,18 @@
 %p#notice= notice
-%h1 Listing Surveys
+%h1 Listing Surveys for #{@course.name}
 %table
   %thead
     %tr
       %th Name
       %th Date
-      %th Course
       %th{:colspan => "3"}
   %tbody
     - @surveys.each do |survey|
       %tr
         %td= survey.name
         %td= survey.date
-        %td= survey.course
         %td= link_to 'Show', survey
         %td= link_to 'Edit', edit_survey_path(survey)
         %td= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Survey', new_survey_path
+= link_to 'New Survey', new_course_survey_path(@course)

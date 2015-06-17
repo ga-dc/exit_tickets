@@ -7,7 +7,9 @@
   = @survey.date
 %p
   %strong Course:
-  = @survey.course
+  = @survey.course.name
+
+.questions
+  - @survey.questions.each do |question|
+    = render partial: "questions/question_show_#{question.question_type}", locals: {question: question}
 = link_to 'Edit', edit_survey_path(@survey)
-|
-= link_to 'Back', surveys_path

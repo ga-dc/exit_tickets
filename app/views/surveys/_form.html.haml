@@ -1,8 +1,15 @@
-= simple_form_for(@survey) do |f|
+= simple_form_for([@course, @survey]) do |f|
   = f.error_notification
   .form-inputs
     = f.input :name
     = f.input :date
-    = f.association :course
+  .survey
+    = f.simple_fields_for :survey_question do |sq|
+      %fieldset
+        = sq.hidden_field :position
+        = sq.simple_fields_for :question do |q|
+          = q.input :question_type
+          = q.input :prompt
+          = q.input :description
   .form-actions
     = f.button :submit
