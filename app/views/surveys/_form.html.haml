@@ -4,12 +4,13 @@
     = f.input :name
     = f.input :date
   .survey
-    = f.simple_fields_for :survey_question do |sq|
+    = f.simple_fields_for :survey_questions do |sq|
       %fieldset
-        = sq.hidden_field :position
+        = sq.input :position
         = sq.simple_fields_for :question do |q|
           = q.input :question_type
           = q.input :prompt
           = q.input :description
+        = sq.input :_destroy, as: :boolean, label: "Remove Question?"
   .form-actions
     = f.button :submit

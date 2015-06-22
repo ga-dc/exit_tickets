@@ -53,6 +53,8 @@ class SurveysController < ApplicationController
     end
 
     def survey_params
-      params.require(:survey).permit(:name, :date, :course_id)
+      # params.require(:survey).permit(:name, :date, :course_id, survey_questions_attributes: [:position, {question_attributes: []}, :"_destroy", :id])
+      # TODO(AB): be more picky in params
+      params.require(:survey).permit!
     end
 end

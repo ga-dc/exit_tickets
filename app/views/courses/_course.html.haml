@@ -7,5 +7,6 @@
 
   .surveys
     %h2 Surveys
+    = button_to "Add Survey", new_course_survey_path(@course), method: :get
     - course.surveys.each do |survey|
-      = survey.date
+      = link_to "Survey on #{survey.date} - (#{survey.name})", survey

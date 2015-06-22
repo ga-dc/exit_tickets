@@ -1,0 +1,6 @@
+%h1 Login
+
+= simple_form_for :session, url: sessions_path, method: :post do |f|
+  = f.input :email,    as: :string
+  = f.input :password, as: :password
+  = f.submit "Login"
