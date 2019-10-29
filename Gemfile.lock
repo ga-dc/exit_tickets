@@ -143,7 +143,7 @@ GEM
       pry (~> 0.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.2)
+    rack (1.6.11)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
     rack-mini-profiler (0.9.3)
